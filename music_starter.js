@@ -1,8 +1,6 @@
 let img;
 let firstRun = true;
 
-let img1;
-let firstRun1 = true;
 
 let angle = 0;
 let angle1 = 10;
@@ -16,41 +14,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(0,10)
   
 
-//   let basscolour = map(bass, 0, 100, 0, 255);
-//   let basscolour1 = map(bass, 0, 100, 255, 0);
-
-
-// background(basscolour, 0, basscolour);
-
-// push()
-// translate(canvasWidth/2, canvasHeight/2);
-// fill(0, 70);
-// ellipse(0, 0, 600, 600);
-// pop()
-
-//Central circle, in correlation to vocal
-//   if (firstRun){
-//   img = loadImage('orb.png')
-//     firstRun = false
-//   }
-
-
-//    let circlescale = map(vocal, 0, 100, 0.1, 1)
-//   if (circlescale < 0.5){
-//     circlescale = 0.5
-//   }
-
-//   push()
-//   translate( canvasWidth/2, canvasHeight/2)
-//   rotate(0)
-//   scale(circlescale/2)
-//   image(img,-215,-235)
-// //To check if the translation is in the centre of the image
-//     // ellipse(0,0,20,20)
-//   pop()
-
-
-
+// Code for the drum portion; It is the inner spinning circles 
   push()
   background(0,10);
   translate(canvasWidth/2, canvasHeight/2);
@@ -125,7 +89,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    pop()
 
 
-
+// Code for the other part; It is the outer spinning circles
   push()
   background(0,10);
   translate(canvasWidth/2, canvasHeight/2);
@@ -203,23 +167,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
 
 
-  
-
-    // if (firstRun1){
-    //   img1 = loadImage('orb2.png');
-    //   firstRun1 = false;
-    // }
-    // let circlescale2 = map(bass, 0, 100, 1, 3);
-    // if (circlescale2 < 1){
-    //   circlescale2 = 1.5
-    // }
-   
-    // push()
-    // translate(canvasWidth/2, canvasHeight/2);
-    // scale(circlescale2);
-    // image(img1, -107, -107);
-    // pop()
-
+   // Code for the vocal part; It is the inner circle that changes in reaction
 
        if (firstRun){
     img = loadImage('orb.png')
@@ -242,29 +190,11 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     pop()
 
 
-  
+// Code for the bass part; It is the ripple circles
 
-  //  let increment = map(bass, 0, 100, );
-  //  translate(canvasWidth/2, canvasHeight/2);
-  //  noFill()
-  //  stroke(255)
-
-  //  let basschange = map(bass, 0, 100, 0, 40)
-
-  //  beginShape();
-  //   for(let a = 0; a < 360; a+= increment){
-  //     let bassr = r * 3.5 + random(-10, basschange);
-  //     let bassx = bassr * cos(a);
-  //     let bassy = bassr * sin(a);
-  //     vertex(bassx, bassy);
-
-  //   }
-
-  //   endShape(CLOSE)
-
-  let increment = 100
+  let increment = 50
   let r2 = r * 6 + increment;
-  let ellipsecolour = map(bass, 0, 100, 150, 255)
+  let ellipsecolour = map(bass, 0, 100, 100, 255)
   
 
   push( )
@@ -274,300 +204,11 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   strokeWeight(5);
 
   let numberOfRings = 6;
-  for (let i=0; i<numberOfRings; i++) {
-    let ringMap = map(vocal, 0, 100, r2 + i * 50, r2 + i * 50 * 1.1);
-    ellipse(
-      0, 0, 
-      ringMap, 
-      ringMap
-    );
-
+  for (let i=1; i<numberOfRings; i++) {
+    //change the 1 and 10 in the map to adjust the effects
+    let growth = (numberOfRings - i) * map(bass, 0, 100, 1, 30); 
+    ellipse(0, 0, r2 + i * 50 + growth, r2 + i * 50 + growth);
   }
-
-  // ellipse(0, 0, r2, r2);
-  // ellipse(0, 0, map(vocal, 0, 100, r2, r2 * 1.2));
-  // ellipse(0, 0, map(vocal, 0, 100, r2 + 50, (r2 + 50) * 1.1));
-  // // ellipse(0, 0, r2 + 50, r2 + 50);
-  // ellipse(0, 0, r2 + 100, r2 + 100);
-  // ellipse(0, 0, r2 + 150, r2 + 150);
-  // ellipse(0, 0, r2 + 200, r2 + 200);
-  // ellipse(0, 0, r2 + 250, r2 + 250);
-  
-
   pop()
-
-   }
-
-//if (firstRun1){
-  // img1 = loadImage('orb2.png')
-  //   firstRun1 = false
-  // }
-
-
-
-
-  //  let circlescale1 = map(other, 0, 100, 0.1, 1)
-  // if (circlescale1 < 0.5){
-  //   circlescale1 = 0.5
-  // }
-
-//   push()
-//   translate( canvasWidth/4 - 100, canvasHeight/2)
-//   rotate(0)
-//   scale(0.5)
-//   //scale(circlescale1/2)
-//   image(img1, -106, -106)
-// //To check if the translation is in the centre of the image
-//     // ellipse(0,0,20,20)
-//   pop()
-
-//   push()
-//   translate( canvasWidth/4 + canvasWidth/2 + 100, canvasHeight/2)
-//   rotate(0)
-//   scale(0.5)
-//   //scale(circlescale1/2)
-//   image(img1, -106, -106)
-// //To check if the translation is in the centre of the image
-//     // ellipse(0,0,20,20)
-//   pop()
+}
  
-
-
-
-// if (firstRun1){
-//   img1 = loadImage('orb2.png')
-//     firstRun1 = false
-//   }
-
-
-
-
-//    let circlescale1 = map(other, 0, 100, 0.1, 1)
-//   if (circlescale1 < 0.5){
-//     circlescale1 = 0.5
-//   }
-
-//   push()
-//   translate( canvasWidth/4 + 25, canvasHeight/2)
-//   scale(0.5)
-//   //scale(circlescale1/2)
-//   image(img1, -106, -106)
-// //To check if the translation is in the centre of the image
-//     // ellipse(0,0,20,20)
-//   pop()
-
-//   push()
-//   translate( canvasWidth/4 + canvasWidth/2 - 25, canvasHeight/2)
-//   scale(0.5)
-//   //scale(circlescale1/2)
-//   image(img1, -106, -106)
-// //To check if the translation is in the centre of the image
-//     // ellipse(0,0,20,20)
-//   pop()
- 
-   
-
-
-
-// stroke(255)
-// strokeWeight(5)
-// noFill()
-
-
-// beginShape();
-// vertex(397, 753);
-// bezierVertex(132, 550, 171, 148, 418, 0);
-// vertex(0, 0);
-// vertex(0, 750);
-// vertex(397, 753);
-// endShape(CLOSE);
-
-// beginShape();
-// vertex(1093, 0);
-// bezierVertex(1390, 286, 1279, 607, 1109, 752);
-// vertex(1500, 750);
-// vertex(1500, 0);
-// vertex(1093, 0);
-// endShape();
-
-
-  // let basscolour = map(bass, 0, 100, 0, 255)
-
-  // //  strokeWeight(10)
-  // //  stroke(255)
-  // noStroke()
-  //  fill(bass, 117, basscolour)
-  //  beginShape();
-  //     vertex(999, 55);
-  //     bezierVertex(1149, 156, 1313, 416, 1021, 694);
-  //     vertex(1450, 694)
-  //     vertex(1450, 55)
-  //     vertex(999, 55);
-  //  endShape();
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    // background(237, 26 ,112 );
-  
-  // strokeWeight(16)
-  // stroke(252, 238, 33);
-
-
-  // let x = r * cos(angle);
-  // let y = r * sin(angle);
-  // point(x , y);
-
-  // angle += 0.04;
-  // r -= random(-2, 2);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // background (255)
- 
-  //  background(20)
-  // textFont('Verdana'); // please use CSS safe fonts
-  // rectMode(CENTER)
-  // textSize(24);
-
-  // let eyeSize = map(drum, 0, 100, 50, 150)
-  // ellipse(100, 100, eyeSize, eyeSize)
-  // ellipse(300, 100, eyeSize, eyeSize)
-
-  // let mouthSize = map(vocal,0,100,30,300 )
-  // rect(200, 300, 200, mouthSize)
-
-
-
-
-
-
-
-
-
- //   let circlescale = map(vocal, 0, 100, 0.1, 1)
-  // if (circlescale < 0.5){
-  //   circlescale = 0.5
-  // }
-
-  // push()
-  // translate(250,300)
-  // rotate(0)
-  // scale(circlescale)
-  // image(img,-215,-235)
-  // //ellipse(0,0,20,20)
-  // pop()
-
-
-//  background(20)
-//   textFont('Verdana'); // please use CSS safe fonts
-//   rectMode(CENTER)
-//   textSize(24);
-
- // let eyeSize = map(drum, 0, 100, 50, 150)
-  // ellipse(100, 100, eyeSize, eyeSize)
-  // ellipse(300, 100, eyeSize, eyeSize)
-
-  // let mouthSize = map(vocal,0,100,30,300 )
-  // rect(200, 300, 200, mouthSize)
-
-
- // background(20)
-  // textFont('Verdana'); // please use CSS safe fonts
-  // rectMode(CENTER)
-  // textSize(24);
-
-
-
-
-  // let eyeSize = map(drum, 0, 100, 50, 150)
-  // ellipse(100, 100, eyeSize, eyeSize)
-  // ellipse(300, 100, eyeSize, eyeSize)
-
-  // let mouthSize = map(vocal,0,100,30,300 )
-  // rect(200, 300, 200, mouthSize)
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //  let bar_spacing = height / 10;
-  //  let bar_height = width / 12;
-  //  let bar_pos_x = width / 2;
- 
-
-  //  // vocal bar is red
-  //  fill(200, 0, 0);
-  //  rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
-  //  fill(0);
-  //  text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
- 
-  //  // drum bar is green
-  //  fill(0, 200, 0);
-  //  rect(bar_pos_x, height / 2 + 2 * bar_spacing, 4 * drum, bar_height);
-  //  fill(0);
-  //  text("drums", bar_pos_x, height / 2 + 2 * bar_spacing + 8);
- 
-  //  // bass bar is blue
-  //  fill(50, 50, 240);
-  //  rect(bar_pos_x, height / 2 + 3 * bar_spacing, 4 * bass, bar_height);
-  //  fill(0);
-  //  text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
- 
-  //  // other bar is white
-  //  fill(200, 200, 200);
-  //  rect(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
-  //  fill(0);
-  //  text("other", bar_pos_x, height / 2 + 4 * bar_spacing + 8);
-  //  fill(255, 255, 0);
- 
-  //  // display "words"
-  //  textAlign(CENTER);
-  //  textSize(vocal);
-  //  text(words, width/2, height/3);
